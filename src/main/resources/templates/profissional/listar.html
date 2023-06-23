@@ -1,0 +1,42 @@
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Listar profissionais</title>
+        <meta charset="UTF-8"/>
+        <!--Import Google Icon Font-->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+        <!--Import materialize.css-->
+        <link type="text/css" rel="stylesheet" href="../../css/materialize.min.css"  media="screen,projection"/>
+        <!--Let browser know website is optimized for mobile-->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+
+    <body class="grey lighten-2">
+        <div id="listaDeProfissionais">
+            <h3 class="main-title center">Lista de profissionais</h3>
+            <div class="container">
+                <table class="highlight reponsive-table">
+                    <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Função</th>
+                        <th  style="text-align: center;">Ações</th>
+                    </tr>
+                    </thead>
+                    <tr th:each="profissional : ${profissionais}">
+                        <td><span th:text="${profissional.nome}"></span></td>
+                        <td><span th:text="${profissional.funcao}"></span></td>
+                        <td  style="text-align: center;">
+                            <a th:href="@{'/profissional/visualizar/'+${profissional.profissionalid}}" title="Visualizar" class="btn-floating hoverable">
+                                <i class="material-icons teal-text text-lighten-5">edit_note</i>
+                            </a>
+                        </td>
+                    </tr>
+                </table>
+                <a href="/" class="btn-floating btn-large waves-effect waves-light hoverable" style="margin-top: 2rem"><i class="material-icons teal-text text-lighten-5">home</i></a>
+            </div>
+        </div>
+
+
+        <script type="text/javascript" src="../../js/materialize.min.js"></script>
+    </body>
+</html>
